@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome Page</title>
+</head>
+<body>
+    <h2>Welcome</h2>
+    <p>Spring Security Thymeleaf example</p>
+    <div sec:authorize="hasRole('USER')">Text visible for user.</div>
+    <div sec:authorize="hasRole('ADMIN')">Text visible for admin.</div>
+    <div sec:authorize="isAuthenticated()">Text visible only for authenticated users.</div>
+    Authenticated username:
+    <div sec:authentication="name"></div>
+    Authenticated user roles:
+    <div sec:authentication="principal.authorities"></div>
+    <a th:href="@{/logout}">logout</a>
+</body>
+</html>
